@@ -8,6 +8,23 @@ configure :development do
   BetterErrors.application_root = File.expand_path('..', __FILE__)
 end
 
-get '/' do # ROUTER
-  'My first web server!' # CONTROLLER
+# get '/' do # ROUTER
+#   'My first web server!' # CONTROLLER
+# end
+
+get '/' do
+  @usernames = [ 'ssaunier', 'Papillard' ]
+  erb :index
 end
+
+
+get '/about' do
+  erb :about
+end
+
+get '/team/:username' do
+  binding.pry
+  puts params[:username]
+  "The username is #{params[:username]}"
+end
+
